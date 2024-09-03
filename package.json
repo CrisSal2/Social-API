@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/CrisSal2/Social-API#readme",
   "dependencies": {
+    "dayjs": "^1.11.13",
     "express": "^4.19.2",
     "mongodb": "^6.8.0",
     "mongoose": "^8.6.0"
