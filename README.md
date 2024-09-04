@@ -19,9 +19,7 @@
   
 ## Installation
 
-# Prerequisites
-
-  - Node.js
+  - Needed: Node.js
   
   - Clone the repository: git clone https://github.com/CrisSal2/Social-API.git
 
