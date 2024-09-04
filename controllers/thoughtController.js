@@ -1,4 +1,5 @@
 const { User, Thought } = require('../models');
+const mongoose = require('../config/connection');
 
 module.exports = {
 
@@ -16,15 +17,17 @@ module.exports = {
       if (!mongoose.Types.ObjectId.isValid(req.params.thoughtId)) {
         return res.status(400).json({ message: 'Invalid thought ID format' });
       }
-      const thought = await Thought.findOne({
-        _id: req.params.thoughtId,
-      }).select('-__v');
+  
+      const thought = await Thought.findById(req.params.thoughtId).select('-__v');
+  
       if (!thought) {
         return res.status(404).json({ message: 'No thought found with this ID' });
       }
+  
       res.json(thought);
     } catch (err) {
-      res.status(500).json(err);
+      console.error('Error fetching thought:', err); // Log the error
+      res.status(500).json({ message: 'Server error', error: err.message }); // Provide a cleaner error response
     }
   },
 

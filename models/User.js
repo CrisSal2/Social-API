@@ -21,16 +21,17 @@ const userSchema = new Schema({
   },
   {
     toJSON: {
-      virtuals: true,
+      virtuals: false,
     },
     id: false,
 });
 
 
+// I couldn't get the virtual to work :'(
 
-userSchema.virtual('friendCount').get(function () {
+/* userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
-});
+}); */
 
 const User = model('User', userSchema);
 

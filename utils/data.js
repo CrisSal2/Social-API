@@ -24,7 +24,7 @@ const thoughts = [
     "Looking forward to more content like this!"
 ];
 
-const thoughtReactions = ["Like", "Dislike"];
+const thoughtReactions = ['Like', 'Dislike'];
 
 // Get a random value from an array
 function random(arr) {

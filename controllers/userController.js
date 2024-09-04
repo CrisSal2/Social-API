@@ -1,4 +1,5 @@
 const { User, Thought } = require('../models');
+const mongoose = require('../config/connection');
 
 module.exports = {
 
@@ -28,7 +29,8 @@ module.exports = {
       }
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      console.error('Error fetching user:', err); // Log the error
+      res.status(500).json({ message: 'Server error', error: err.message }); // Provide a cleaner error response
     }
   },
 
@@ -63,7 +65,7 @@ module.exports = {
         return res.status(404).json({ message: 'No user found with this ID' });
       }
       await Thought.deleteMany({ _id: { $in: user.thoughts } });
-      res.json({ message: 'User and associated thoughts deleted' });
+      res.json({ message: 'User deleted' });
     } catch (err) {
       res.status(500).json(err);
     }
